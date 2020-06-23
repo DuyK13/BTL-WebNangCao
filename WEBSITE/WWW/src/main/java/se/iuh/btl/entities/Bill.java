@@ -5,10 +5,10 @@ import java.time.LocalDate;
 import java.util.List;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -20,28 +20,29 @@ public class Bill implements Serializable {
 	private static final long serialVersionUID = -8642096444457151151L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
-	private int id;
+	private int billId;
 	private LocalDate orderdate;
 	private double total;
 
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne
+	@JoinColumn(name = "user_id", referencedColumnName = "userid")
 	private User user;
 
 	@OneToMany(mappedBy = "pk.bill")
 	private List<BillDetail> listChiTietBill;
 
-	public Bill(int id, LocalDate orderdate, double total, User user, List<BillDetail> listChiTietBill) {
+	public Bill(int billId, LocalDate orderdate, double total, User user, List<BillDetail> listChiTietBill) {
 		super();
-		this.id = id;
+		this.billId = billId;
 		this.orderdate = orderdate;
 		this.total = total;
 		this.user = user;
 		this.listChiTietBill = listChiTietBill;
 	}
 
-	public Bill(int id, LocalDate orderdate, double total, User user) {
+	public Bill(int billId, LocalDate orderdate, double total, User user) {
 		super();
-		this.id = id;
+		this.billId = billId;
 		this.orderdate = orderdate;
 		this.total = total;
 		this.user = user;
@@ -52,12 +53,12 @@ public class Bill implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
-	public int getId() {
-		return id;
+	public int getBillId() {
+		return billId;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setBillId(int billId) {
+		this.billId = billId;
 	}
 
 	public LocalDate getOrderdate() {
@@ -98,7 +99,7 @@ public class Bill implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Bill [id=" + id + ", orderdate=" + orderdate + ", total=" + total + ", user=" + user
+		return "Bill [billId=" + billId + ", orderdate=" + orderdate + ", total=" + total + ", user=" + user
 				+ ", listChiTietBill=" + listChiTietBill + "]";
 	}
 }

@@ -5,19 +5,17 @@ import java.io.Serializable;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.MapsId;
+import javax.persistence.Table;
 import javax.persistence.Transient;
 
 @Entity
-//@AssociationOverrides({
-//	@AssociationOverride(name = "pk.bill", joinColumns = @JoinColumn(referencedColumnName = "bill")),
-//	@AssociationOverride(name = "pk.chocolate", joinColumns = @JoinColumn(referencedColumnName = "chocolate"))
-//})
+@Table(name = "BillDetail")
 public class BillDetail implements Serializable{
 
 	private static final long serialVersionUID = 1569042832156018465L;
 
 	@EmbeddedId
-	private BillDetail_PK id;
+	private BillDetail_PK pk;
 
 	@MapsId("id")
 	private Bill bill;
@@ -26,9 +24,9 @@ public class BillDetail implements Serializable{
 	private Chocolate chocolate;
 	private int quantity;
 
-	public BillDetail(BillDetail_PK id, int quantity) {
+	public BillDetail(BillDetail_PK pk, int quantity) {
 		super();
-		this.id = id;
+		this.pk = pk;
 		this.quantity = quantity;
 	}
 
@@ -37,11 +35,11 @@ public class BillDetail implements Serializable{
 	}
 
 	public BillDetail_PK getId() {
-		return id;
+		return pk;
 	}
 
-	public void setId(BillDetail_PK id) {
-		this.id = id;
+	public void setId(BillDetail_PK pk) {
+		this.pk = pk;
 	}
 
 	public int getQuantity() {
@@ -72,6 +70,6 @@ public class BillDetail implements Serializable{
 
 	@Override
 	public String toString() {
-		return "BillDetail [id=" + id + ", quantity=" + quantity + "]";
+		return "BillDetail [pk=" + pk + ", quantity=" + quantity + "]";
 	}
 }

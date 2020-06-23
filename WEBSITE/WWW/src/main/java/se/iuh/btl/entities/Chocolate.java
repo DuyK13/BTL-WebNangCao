@@ -3,6 +3,7 @@ package se.iuh.btl.entities;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -10,18 +11,21 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "Chocolate")
 public class Chocolate implements Serializable{
 
 	private static final long serialVersionUID = 2281637492511209363L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
-	private int id;
+	private int chocolateId;
 	private String name;
 	private int amount;
 	private double cost;
 	private String description;
+	@ElementCollection()
 	private List<String> listImage;
 	private int discount;
 	
@@ -31,10 +35,10 @@ public class Chocolate implements Serializable{
 	@ManyToOne(fetch = FetchType.EAGER)
 	private Category category;
 
-	public Chocolate(int id, String name, int amount, double cost, String description, List<String> listImage,
+	public Chocolate(int chocolateId, String name, int amount, double cost, String description, List<String> listImage,
 			int discount, List<BillDetail> listChiTietBill, Category category) {
 		super();
-		this.id = id;
+		this.chocolateId = chocolateId;
 		this.name = name;
 		this.amount = amount;
 		this.cost = cost;
@@ -50,10 +54,10 @@ public class Chocolate implements Serializable{
 		// TODO Auto-generated constructor stub
 	}
 
-	public Chocolate(int id, String name, int amount, double cost, String description, List<String> listImage,
+	public Chocolate(int chocolateId, String name, int amount, double cost, String description, List<String> listImage,
 			int discount) {
 		super();
-		this.id = id;
+		this.chocolateId = chocolateId;
 		this.name = name;
 		this.amount = amount;
 		this.cost = cost;
@@ -62,12 +66,12 @@ public class Chocolate implements Serializable{
 		this.discount = discount;
 	}
 
-	public int getId() {
-		return id;
+	public int getChocolateId() {
+		return chocolateId;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setChocolateId(int chocolateId) {
+		this.chocolateId = chocolateId;
 	}
 
 	public String getName() {
@@ -136,7 +140,7 @@ public class Chocolate implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Chocolate [id=" + id + ", name=" + name + ", amount=" + amount + ", cost=" + cost + ", description="
+		return "Chocolate [chocolateId=" + chocolateId + ", name=" + name + ", amount=" + amount + ", cost=" + cost + ", description="
 				+ description + ", listImage=" + listImage + ", discount=" + discount + ", listChiTietBill="
 				+ listChiTietBill + ", category=" + category + "]";
 	}

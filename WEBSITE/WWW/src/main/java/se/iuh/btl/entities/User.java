@@ -3,9 +3,8 @@ package se.iuh.btl.entities;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.persistence.CascadeType;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -13,14 +12,15 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "User")
+@Table(name = "Users")
 public class User implements Serializable {
-
+	
 	private static final long serialVersionUID = -2324727536666057968L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
-	private String id;
+	private String userid;
 	private String name;
+	@Embedded
 	private Address Addresss;
 	private String PhoneNumber;
 
@@ -39,13 +39,13 @@ public class User implements Serializable {
 	private int status;
 	private String email;
 
-	@OneToMany(mappedBy = "bill", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "user")
 	private List<Bill> listBill;
 
-	public User(String id, String name, Address addresss, String phoneNumber, int gender, String username,
+	public User(String userid, String name, Address addresss, String phoneNumber, int gender, String username,
 			String password, int status, String email, List<Bill> listBill) {
 		super();
-		this.id = id;
+		this.userid = userid;
 		this.name = name;
 		Addresss = addresss;
 		PhoneNumber = phoneNumber;
@@ -57,10 +57,10 @@ public class User implements Serializable {
 		this.listBill = listBill;
 	}
 
-	public User(String id, String name, Address addresss, String phoneNumber, int gender, String username,
+	public User(String userid, String name, Address addresss, String phoneNumber, int gender, String username,
 			String password, int status, String email) {
 		super();
-		this.id = id;
+		this.userid = userid;
 		this.name = name;
 		Addresss = addresss;
 		PhoneNumber = phoneNumber;
@@ -75,12 +75,12 @@ public class User implements Serializable {
 		super();
 	}
 
-	public String getId() {
-		return id;
+	public String getUserId() {
+		return userid;
 	}
 
-	public void setId(String id) {
-		this.id = id;
+	public void setUserId(String userid) {
+		this.userid = userid;
 	}
 
 	public String getName() {
@@ -161,7 +161,7 @@ public class User implements Serializable {
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", name=" + name + ", Addresss=" + Addresss + ", PhoneNumber=" + PhoneNumber
+		return "User [userid=" + userid + ", name=" + name + ", Addresss=" + Addresss + ", PhoneNumber=" + PhoneNumber
 				+ ", gender=" + gender + ", username=" + username + ", password=" + password + ", status=" + status
 				+ ", email=" + email + ", listBill=" + listBill + "]";
 	}
