@@ -1,36 +1,54 @@
 package se.iuh.btl.controller;
 
-import java.text.DateFormat;
-import java.util.Date;
-import java.util.Locale;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-/**
- * Handles requests for the application home page.
- */
+import se.iuh.btl.entities.User;
+import se.iuh.btl.service.userservice.UserService;
+
 @Controller
+@RequestMapping("/user")
 public class UserController {
-	
-	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
-	
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(Locale locale, Model model) {
-		logger.info("Welcome home! The client locale is {}.", locale);
-		
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-		
-		String formattedDate = dateFormat.format(date);
-		
-		model.addAttribute("serverTime", formattedDate );
-		
-		return "home";
+
+	@Autowired
+	private UserService userService;
+
+	@RequestMapping(value = "/listUser", method = RequestMethod.GET)
+	public String listUser(Model model) {
+		List<User> users = userService.getListUsers();
+		model.addAttribute("users", users);
+		return "list-users";
 	}
-	
+
+	@RequestMapping(value = "showForm", method = RequestMethod.GET)
+	public String showFormForAdd(Model model) {
+		User user = new User();
+		model.addAttribute("user", user);
+		return "user-form";
+	}
+
+//    @RequestMapping(value = "/saveUser", method = RequestMethod.POST)
+//    public String saveUser(@ModelAttribute("user") User user) {
+//        customerService.saveCustomer(theCustomer);
+//        return "redirect:/customer/list";
+//    }
+//
+//    @GetMapping("/updateForm")
+//    public String showFormForUpdate(@RequestParam("customerId") int theId,
+//        Model theModel) {
+//        Customer theCustomer = customerService.getCustomer(theId);
+//        theModel.addAttribute("customer", theCustomer);
+//        return "customer-form";
+//    }
+//
+//    @GetMapping("/delete")
+//    public String deleteCustomer(@RequestParam("customerId") int theId) {
+//        customerService.deleteCustomer(theId);
+//        return "redirect:/customer/list";
+//    }
+
 }

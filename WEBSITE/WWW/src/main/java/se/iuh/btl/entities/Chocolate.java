@@ -20,7 +20,7 @@ public class Chocolate implements Serializable{
 	private static final long serialVersionUID = 2281637492511209363L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
-	private int chocolateId;
+	private int chocolateid;
 	private String name;
 	private int amount;
 	private double cost;
@@ -35,10 +35,10 @@ public class Chocolate implements Serializable{
 	@ManyToOne(fetch = FetchType.EAGER)
 	private Category category;
 
-	public Chocolate(int chocolateId, String name, int amount, double cost, String description, List<String> listImage,
+	public Chocolate(int chocolateid, String name, int amount, double cost, String description, List<String> listImage,
 			int discount, List<BillDetail> listChiTietBill, Category category) {
 		super();
-		this.chocolateId = chocolateId;
+		this.chocolateid = chocolateid;
 		this.name = name;
 		this.amount = amount;
 		this.cost = cost;
@@ -54,10 +54,10 @@ public class Chocolate implements Serializable{
 		// TODO Auto-generated constructor stub
 	}
 
-	public Chocolate(int chocolateId, String name, int amount, double cost, String description, List<String> listImage,
+	public Chocolate(int chocolateid, String name, int amount, double cost, String description, List<String> listImage,
 			int discount) {
 		super();
-		this.chocolateId = chocolateId;
+		this.chocolateid = chocolateid;
 		this.name = name;
 		this.amount = amount;
 		this.cost = cost;
@@ -67,11 +67,11 @@ public class Chocolate implements Serializable{
 	}
 
 	public int getChocolateId() {
-		return chocolateId;
+		return chocolateid;
 	}
 
-	public void setChocolateId(int chocolateId) {
-		this.chocolateId = chocolateId;
+	public void setChocolateId(int chocolateid) {
+		this.chocolateid = chocolateid;
 	}
 
 	public String getName() {
@@ -140,7 +140,7 @@ public class Chocolate implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Chocolate [chocolateId=" + chocolateId + ", name=" + name + ", amount=" + amount + ", cost=" + cost + ", description="
+		return "Chocolate [chocolateid=" + chocolateid + ", name=" + name + ", amount=" + amount + ", cost=" + cost + ", description="
 				+ description + ", listImage=" + listImage + ", discount=" + discount + ", listChiTietBill="
 				+ listChiTietBill + ", category=" + category + "]";
 	}

@@ -23,6 +23,15 @@ public class Bill implements Serializable {
 	private int billId;
 	private LocalDate orderdate;
 	private double total;
+	private boolean billConfirm;
+
+	public boolean isBillConfirm() {
+		return billConfirm;
+	}
+
+	public void setBillConfirm(boolean billConfirm) {
+		this.billConfirm = billConfirm;
+	}
 
 	@ManyToOne
 	@JoinColumn(name = "user_id", referencedColumnName = "userid")
@@ -99,7 +108,7 @@ public class Bill implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Bill [billId=" + billId + ", orderdate=" + orderdate + ", total=" + total + ", user=" + user
-				+ ", listChiTietBill=" + listChiTietBill + "]";
+		return "Bill [billId=" + billId + ", orderdate=" + orderdate + ", total=" + total + ", billConfirm="
+				+ billConfirm + ", user=" + user + ", listChiTietBill=" + listChiTietBill + "]";
 	}
 }
