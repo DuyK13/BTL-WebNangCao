@@ -1,7 +1,19 @@
 package se.iuh.btl.service.userservice;
 
-import se.iuh.btl.dao.userdao.UserDAO;
+import java.util.List;
 
-public interface UserService extends UserDAO {
+import se.iuh.btl.entities.User;
 
+public interface UserService{
+	public void addUser(User user);
+
+	public void updateUser(User user);
+
+	public void removeUser(User user);
+
+	public List<User> getListUsers();
+
+	public User getUserById(int id);
+
+	public User getUserByName(int name);
 }

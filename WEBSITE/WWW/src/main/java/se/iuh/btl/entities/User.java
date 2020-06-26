@@ -18,7 +18,7 @@ public class User implements Serializable {
 	private static final long serialVersionUID = -2324727536666057968L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
-	private String userid;
+	private int userid;
 	private String name;
 	@Embedded
 	private Address Addresss;
@@ -36,14 +36,14 @@ public class User implements Serializable {
 	 * 1: staff
 	 * 2: customer
 	 */
-	private int status;
+	private int role;
 	private String email;
 
 	@OneToMany(mappedBy = "user")
 	private List<Bill> listBill;
 
-	public User(String userid, String name, Address addresss, String phoneNumber, int gender, String username,
-			String password, int status, String email, List<Bill> listBill) {
+	public User(int userid, String name, Address addresss, String phoneNumber, int gender, String username,
+			String password, int role, String email, List<Bill> listBill) {
 		super();
 		this.userid = userid;
 		this.name = name;
@@ -52,13 +52,13 @@ public class User implements Serializable {
 		this.gender = gender;
 		this.username = username;
 		this.password = password;
-		this.status = status;
+		this.role = role;
 		this.email = email;
 		this.listBill = listBill;
 	}
 
-	public User(String userid, String name, Address addresss, String phoneNumber, int gender, String username,
-			String password, int status, String email) {
+	public User(int userid, String name, Address addresss, String phoneNumber, int gender, String username,
+			String password, int role, String email) {
 		super();
 		this.userid = userid;
 		this.name = name;
@@ -67,7 +67,7 @@ public class User implements Serializable {
 		this.gender = gender;
 		this.username = username;
 		this.password = password;
-		this.status = status;
+		this.role = role;
 		this.email = email;
 	}
 
@@ -75,11 +75,11 @@ public class User implements Serializable {
 		super();
 	}
 
-	public String getUserId() {
+	public int getUserId() {
 		return userid;
 	}
 
-	public void setUserId(String userid) {
+	public void setUserId(int userid) {
 		this.userid = userid;
 	}
 
@@ -132,11 +132,11 @@ public class User implements Serializable {
 	}
 
 	public int getStatus() {
-		return status;
+		return role;
 	}
 
-	public void setStatus(int status) {
-		this.status = status;
+	public void setStatus(int role) {
+		this.role = role;
 	}
 
 	public String getEmail() {
@@ -162,7 +162,7 @@ public class User implements Serializable {
 	@Override
 	public String toString() {
 		return "User [userid=" + userid + ", name=" + name + ", Addresss=" + Addresss + ", PhoneNumber=" + PhoneNumber
-				+ ", gender=" + gender + ", username=" + username + ", password=" + password + ", status=" + status
+				+ ", gender=" + gender + ", username=" + username + ", password=" + password + ", role=" + role
 				+ ", email=" + email + ", listBill=" + listBill + "]";
 	}
 }

@@ -24,6 +24,18 @@ public class BillDetail implements Serializable{
 	private Chocolate chocolate;
 	private int quantity;
 
+	public BillDetail_PK getPk() {
+		return pk;
+	}
+
+	public void setPk(BillDetail_PK pk) {
+		this.pk = pk;
+	}
+
+	public void setChocolate(Chocolate chocolate) {
+		this.chocolate = chocolate;
+	}
+
 	public BillDetail(BillDetail_PK pk, int quantity) {
 		super();
 		this.pk = pk;
