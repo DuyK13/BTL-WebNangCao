@@ -17,8 +17,8 @@ public class User implements Serializable {
 	
 	private static final long serialVersionUID = -2324727536666057968L;
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
-	private int userid;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
 	private String name;
 	@Embedded
 	private Address Addresss;
@@ -42,10 +42,10 @@ public class User implements Serializable {
 	@OneToMany(mappedBy = "user")
 	private List<Bill> listBill;
 
-	public User(int userid, String name, Address addresss, String phoneNumber, int gender, String username,
+	public User(int id, String name, Address addresss, String phoneNumber, int gender, String username,
 			String password, int role, String email, List<Bill> listBill) {
 		super();
-		this.userid = userid;
+		this.id = id;
 		this.name = name;
 		Addresss = addresss;
 		PhoneNumber = phoneNumber;
@@ -57,10 +57,10 @@ public class User implements Serializable {
 		this.listBill = listBill;
 	}
 
-	public User(int userid, String name, Address addresss, String phoneNumber, int gender, String username,
+	public User(int id, String name, Address addresss, String phoneNumber, int gender, String username,
 			String password, int role, String email) {
 		super();
-		this.userid = userid;
+		this.id = id;
 		this.name = name;
 		Addresss = addresss;
 		PhoneNumber = phoneNumber;
@@ -76,11 +76,11 @@ public class User implements Serializable {
 	}
 
 	public int getUserId() {
-		return userid;
+		return id;
 	}
 
-	public void setUserId(int userid) {
-		this.userid = userid;
+	public void setUserId(int id) {
+		this.id = id;
 	}
 
 	public String getName() {
@@ -161,7 +161,7 @@ public class User implements Serializable {
 
 	@Override
 	public String toString() {
-		return "User [userid=" + userid + ", name=" + name + ", Addresss=" + Addresss + ", PhoneNumber=" + PhoneNumber
+		return "User [id=" + id + ", name=" + name + ", Addresss=" + Addresss + ", PhoneNumber=" + PhoneNumber
 				+ ", gender=" + gender + ", username=" + username + ", password=" + password + ", role=" + role
 				+ ", email=" + email + ", listBill=" + listBill + "]";
 	}

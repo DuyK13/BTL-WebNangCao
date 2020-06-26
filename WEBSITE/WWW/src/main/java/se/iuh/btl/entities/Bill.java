@@ -19,8 +19,8 @@ public class Bill implements Serializable {
 
 	private static final long serialVersionUID = -8642096444457151151L;
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
-	private int billId;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
 	private LocalDate orderdate;
 	private double total;
 	private boolean billConfirm;
@@ -34,24 +34,24 @@ public class Bill implements Serializable {
 	}
 
 	@ManyToOne
-	@JoinColumn(name = "user_id", referencedColumnName = "userid")
+	@JoinColumn(name = "user_id", referencedColumnName = "id")
 	private User user;
 
 	@OneToMany(mappedBy = "pk.bill")
 	private List<BillDetail> listChiTietBill;
 
-	public Bill(int billId, LocalDate orderdate, double total, User user, List<BillDetail> listChiTietBill) {
+	public Bill(int id, LocalDate orderdate, double total, User user, List<BillDetail> listChiTietBill) {
 		super();
-		this.billId = billId;
+		this.id = id;
 		this.orderdate = orderdate;
 		this.total = total;
 		this.user = user;
 		this.listChiTietBill = listChiTietBill;
 	}
 
-	public Bill(int billId, LocalDate orderdate, double total, User user) {
+	public Bill(int id, LocalDate orderdate, double total, User user) {
 		super();
-		this.billId = billId;
+		this.id = id;
 		this.orderdate = orderdate;
 		this.total = total;
 		this.user = user;
@@ -63,11 +63,11 @@ public class Bill implements Serializable {
 	}
 
 	public int getBillId() {
-		return billId;
+		return id;
 	}
 
-	public void setBillId(int billId) {
-		this.billId = billId;
+	public void setBillId(int id) {
+		this.id = id;
 	}
 
 	public LocalDate getOrderdate() {
@@ -108,7 +108,7 @@ public class Bill implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Bill [billId=" + billId + ", orderdate=" + orderdate + ", total=" + total + ", billConfirm="
+		return "Bill [id=" + id + ", orderdate=" + orderdate + ", total=" + total + ", billConfirm="
 				+ billConfirm + ", user=" + user + ", listChiTietBill=" + listChiTietBill + "]";
 	}
 }

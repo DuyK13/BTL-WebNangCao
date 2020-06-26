@@ -117,4 +117,16 @@
 		<beans:property name="chocolateDAO" ref="chocolateDAO"></beans:property>
 	</beans:bean>
 	
+	<beans:bean id="categoryDAO"
+		class="se.iuh.btl.dao.categorydao.CategoryDAOImpl">
+		<beans:property name="sessionFactory"
+			ref="hibernate5AnnotatedSessionFactory">
+		</beans:property>
+	</beans:bean>
+	
+	<beans:bean id="categoryService"
+		class="se.iuh.btl.service.categoryservice.CategoryServiceImpl">
+		<beans:property name="categoryDAO" ref="categoryDAO"></beans:property>
+	</beans:bean>
+	
 </beans:beans>

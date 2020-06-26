@@ -3,7 +3,6 @@ package se.iuh.btl.entities;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -15,35 +14,34 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "Chocolate")
-public class Chocolate implements Serializable{
+public class Chocolate implements Serializable {
 
 	private static final long serialVersionUID = 2281637492511209363L;
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
-	private int chocolateid;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
 	private String name;
 	private int amount;
 	private double cost;
 	private String description;
-	@ElementCollection()
-	private List<String> listImage;
+	private String image;
 	private int discount;
-	
+
 	@OneToMany(mappedBy = "pk.chocolate")
 	private List<BillDetail> listChiTietBill;
-	
+
 	@ManyToOne(fetch = FetchType.EAGER)
 	private Category category;
 
-	public Chocolate(int chocolateid, String name, int amount, double cost, String description, List<String> listImage,
+	public Chocolate(int id, String name, int amount, double cost, String description, String image,
 			int discount, List<BillDetail> listChiTietBill, Category category) {
 		super();
-		this.chocolateid = chocolateid;
+		this.id = id;
 		this.name = name;
 		this.amount = amount;
 		this.cost = cost;
 		this.description = description;
-		this.listImage = listImage;
+		this.image = image;
 		this.discount = discount;
 		this.listChiTietBill = listChiTietBill;
 		this.category = category;
@@ -54,24 +52,24 @@ public class Chocolate implements Serializable{
 		// TODO Auto-generated constructor stub
 	}
 
-	public Chocolate(int chocolateid, String name, int amount, double cost, String description, List<String> listImage,
+	public Chocolate(int id, String name, int amount, double cost, String description, String image,
 			int discount) {
 		super();
-		this.chocolateid = chocolateid;
+		this.id = id;
 		this.name = name;
 		this.amount = amount;
 		this.cost = cost;
 		this.description = description;
-		this.listImage = listImage;
+		this.image = image;
 		this.discount = discount;
 	}
 
 	public int getChocolateId() {
-		return chocolateid;
+		return id;
 	}
 
-	public void setChocolateId(int chocolateid) {
-		this.chocolateid = chocolateid;
+	public void setChocolateId(int id) {
+		this.id = id;
 	}
 
 	public String getName() {
@@ -106,12 +104,12 @@ public class Chocolate implements Serializable{
 		this.description = description;
 	}
 
-	public List<String> getListImage() {
-		return listImage;
+	public String getImage() {
+		return image;
 	}
 
-	public void setListImage(List<String> listImage) {
-		this.listImage = listImage;
+	public void setImage(String image) {
+		this.image = image;
 	}
 
 	public int getDiscount() {
@@ -140,8 +138,8 @@ public class Chocolate implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Chocolate [chocolateid=" + chocolateid + ", name=" + name + ", amount=" + amount + ", cost=" + cost + ", description="
-				+ description + ", listImage=" + listImage + ", discount=" + discount + ", listChiTietBill="
+		return "Chocolate [id=" + id + ", name=" + name + ", amount=" + amount + ", cost=" + cost
+				+ ", description=" + description + ", image=" + image + ", discount=" + discount + ", listChiTietBill="
 				+ listChiTietBill + ", category=" + category + "]";
 	}
 }

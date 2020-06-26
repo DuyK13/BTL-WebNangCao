@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>>List chocolates</title>
+<title>>List categorys</title>
 <link href="<c:url value="resources/css/bootstrap.min.css" />"
 	rel="stylesheet">
 <script src="<c:url value="resources/js/jquery-3.3.1.min.js" />"></script>
@@ -14,12 +14,12 @@
 <body>
 	<div class="container">
 		<div class="col-md-offset-1 col-md-10">
-			<input type="button" value="Add Chocolate"
-				onclick="window.location.href='showChocolateForm'; return false;"
+			<input type="button" value="Add Category" 
+				onclick="window.location.href='showCategoryForm'; return false;"
 				class="btn btn-primary" /> <br /> <br />
 			<div class="panel panel-info">
 				<div class="panel-heading">
-					<div class="panel-title">Chocolate List</div>
+					<div class="panel-title">Category List</div>
 				</div>
 				<div class="panel-body">
 					<table class="table table-striped table-bordered">
@@ -34,8 +34,17 @@
 						</tr>
 
 						<c:forEach var="chocolate" items="${chocolates}">
+							<c:url var="updateLink"
+								value="/chocolate/updateForm/${chocolate.chocolateid}">
+								<c:param name="chocolateid" value="${chocolate.chocolateid}" />
+							</c:url>
+
+							<c:url var="deleteLink"
+								value="/chocolate/delete/${chocolate.chocolateid}">
+								<c:param name="chocolateid" value="${chocolate.chocolateid}" />
+							</c:url>
+
 							<tr>
-								<td>${chocolate.id}</td>
 								<td>${chocolate.name}</td>
 								<td>${chocolate.amount}</td>
 								<td>${chocolate.cost}</td>
@@ -43,7 +52,14 @@
 								<td>${chocolate.listImage.get(0)}</td>
 								<td>${chocolate.discount}</td>
 								<td>${chocolate.category.name}</td>
+								<td>
+									<!-- display the update link --> <a href="${updateLink}">Update</a>
+									| <a href="${deleteLink}"
+									onclick="if (!(confirm('Are you sure you want to delete this chocolate?'))) return false">Delete</a>
+								</td>
+
 							</tr>
+
 						</c:forEach>
 
 					</table>
