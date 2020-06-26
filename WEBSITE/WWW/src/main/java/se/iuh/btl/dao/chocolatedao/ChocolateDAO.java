@@ -15,6 +15,11 @@ public interface ChocolateDAO {
 
 	public void deleteChocoLate(int id);
 	
+	/**
+	 * tìm chocolate bằng tên
+	 * @param name
+	 * @return
+	 */
 	public List<Chocolate> getChocolatesByName(String name);
 	
 	public String saveImage(MultipartFile file);

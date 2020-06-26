@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Chocolate form</title>
+<title>Category form</title>
 <link href="<c:url value="resources/css/bootstrap.min.css" />"
 	rel="stylesheet">
 <script src="<c:url value="resources/js/jquery-3.3.1.min.js" />"></script>
@@ -17,11 +17,11 @@
 		<div class="col-md-offset-2 col-md-7">
 			<div class="panel panel-info">
 				<div class="panel-heading">
-					<div class="panel-title text-center">Add Chocolate</div>
+					<div class="panel-title text-center">Add Category</div>
 				</div>
 				<div class="panel-body">
 					<form:form action="saveChocolate" cssClass="form-horizontal"
-						method="post" modelAttribute="chocolate" enctype="multipart/form-data">
+						method="post" modelAttribute="category">
 						<form:hidden path="chocolateId" />
 
 						<div class="form-group">

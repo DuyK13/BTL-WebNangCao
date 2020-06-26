@@ -1,6 +1,5 @@
 package se.iuh.btl.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,14 +27,19 @@ public class ChocolateController {
 		this.chocolateService = chocolateService;
 	}
 
-	@GetMapping(value = {"/listchocolates", "/"})
+	@GetMapping("/")
+	public String getIndex() {
+		return "index";
+	}
+	
+	@GetMapping(value = {"/listchocolates"})
 	public String listChocolates(Model model) {
 		List<Chocolate> chocolates = chocolateService.getChocoLates();
 		model.addAttribute("chocolates", chocolates);
 		return "list-chocolates";
 	}
 
-	@GetMapping("/showForm")
+	@GetMapping("/showChocolateForm")
 	public String showFormForAdd(Model model) {
 		Chocolate chocolate = new Chocolate();
 		model.addAttribute("chocolate", chocolate);
@@ -43,27 +47,22 @@ public class ChocolateController {
 	}
 
 	@PostMapping("/saveChocolate")
-	public String saveCustomer(@ModelAttribute("chocolate") Chocolate chocolate, @RequestParam(value = "files") MultipartFile[] files) {
-		List<String> listImage = new ArrayList<>();
-		System.out.println(files.toString());
-		for(MultipartFile file : files) {
-			String filename = chocolateService.saveImage(file);
-			listImage.add(filename);
-		}
-		chocolate.setListImage(listImage);
+	public String saveChocolate(@ModelAttribute("chocolate") Chocolate chocolate, @RequestParam(value = "file") MultipartFile file) {
+		String image = chocolateService.saveImage(file);
+		chocolate.setImage(image);
 		chocolateService.saveChocoLate(chocolate);
-		return "redirect:/chocolate/listChocolates";
+		return "redirect:/listChocolates";
 	}
 
-	@GetMapping("/updateForm/{id}")
+	@GetMapping("/updateChocolateForm/{id}")
 	public String showFormForUpdate(@PathVariable("id") int id, Model model) {
 		Chocolate chocolate = chocolateService.getChocoLate(id);
 		model.addAttribute("chocolate", chocolate);
 		return "chocolate-form";
 	}
 
-	@GetMapping("/delete/{id}")
-	public String deleteCustomer(@PathVariable("id") int id) {
+	@GetMapping("/deleteChocolate/{id}")
+	public String deleteChocolate(@PathVariable("id") int id) {
 		chocolateService.deleteChocoLate(id);
 		return "redirect:/chocolate/listChocolates";
 	}

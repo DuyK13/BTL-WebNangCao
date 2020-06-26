@@ -17,23 +17,13 @@ public class Category implements Serializable{
 	
 	private static final long serialVersionUID = -6519979800001866635L;
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
-	private int categoryId;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
 	private String name;
 
-	@OneToMany(mappedBy = "category", fetch = FetchType.LAZY)
-	private List<Chocolate> listChocolate;
-
-	public Category(int categoryId, String name, List<Chocolate> listChocolate) {
+	public Category(int id, String name) {
 		super();
-		this.categoryId = categoryId;
-		this.name = name;
-		this.listChocolate = listChocolate;
-	}
-
-	public Category(int categoryId, String name) {
-		super();
-		this.categoryId = categoryId;
+		this.id = id;
 		this.name = name;
 	}
 
@@ -43,11 +33,11 @@ public class Category implements Serializable{
 	}
 
 	public int getCategoryId() {
-		return categoryId;
+		return id;
 	}
 
-	public void setCategoryId(int categoryId) {
-		this.categoryId = categoryId;
+	public void setCategoryId(int id) {
+		this.id = id;
 	}
 
 	public String getName() {
@@ -58,16 +48,8 @@ public class Category implements Serializable{
 		this.name = name;
 	}
 
-	public List<Chocolate> getListChocolate() {
-		return listChocolate;
-	}
-
-	public void setListChocolate(List<Chocolate> listChocolate) {
-		this.listChocolate = listChocolate;
-	}
-
 	@Override
 	public String toString() {
-		return "Category [categoryId=" + categoryId + ", name=" + name + ", listChocolate=" + listChocolate + "]";
+		return "Category [id=" + id + ", name=" + name + "]";
 	}
 }

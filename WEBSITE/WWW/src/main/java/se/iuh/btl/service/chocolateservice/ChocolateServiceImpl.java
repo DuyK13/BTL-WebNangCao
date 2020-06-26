@@ -31,21 +31,25 @@ public class ChocolateServiceImpl implements ChocolateService {
 	}
 
 	@Override
+	@Transactional
 	public Chocolate getChocoLate(int id) {
 		return chocolateDAO.getChocoLate(id);
 	}
 
 	@Override
+	@Transactional
 	public void deleteChocoLate(int id) {
 		chocolateDAO.deleteChocoLate(id);
 	}
 
 	@Override
+	@Transactional
 	public List<Chocolate> getChocolatesByName(String name) {
 		return chocolateDAO.getChocolatesByName(name);
 	}
 
 	@Override
+	@Transactional
 	public String saveImage(MultipartFile file) {
 		return chocolateDAO.saveImage(file);
 	}
