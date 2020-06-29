@@ -129,10 +129,4 @@
 		class="se.iuh.btl.service.categoryservice.CategoryServiceImpl">
 		<beans:property name="categoryDAO" ref="categoryDAO"></beans:property>
 	</beans:bean>
-	
-<<<<<<< HEAD
-	<mvc:annotation-driven />
-	
-=======
->>>>>>> origin/master
 </beans:beans>
