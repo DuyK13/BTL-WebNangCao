@@ -49,7 +49,6 @@ public class Chocolate implements Serializable {
 
 	public Chocolate() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Chocolate(int id, String name, int amount, double cost, String description, String image,
