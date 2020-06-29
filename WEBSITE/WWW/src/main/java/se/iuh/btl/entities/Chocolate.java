@@ -64,11 +64,19 @@ public class Chocolate implements Serializable {
 		this.discount = discount;
 	}
 
+<<<<<<< HEAD
 	public int getId() {
 		return id;
 	}
 
 	public void setId(int id) {
+=======
+	public int getChocolateId() {
+		return id;
+	}
+
+	public void setChocolateId(int id) {
+>>>>>>> origin/master
 		this.id = id;
 	}
 
