@@ -3,6 +3,7 @@
 # Edit at https://www.toptal.com/developers/gitignore?templates=eclipse,windows
 
 ### Eclipse ###
+pom.properties
 .metadata
 bin/
 tmp/
