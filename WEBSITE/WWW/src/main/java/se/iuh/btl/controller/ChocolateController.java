@@ -17,7 +17,7 @@ import se.iuh.btl.entities.Chocolate;
 import se.iuh.btl.service.chocolateservice.ChocolateService;
 
 @Controller
-@RequestMapping(value = {"/chocolate", "/"})
+@RequestMapping(value={"/chocolate","/"})
 public class ChocolateController {
 
 	private ChocolateService chocolateService;

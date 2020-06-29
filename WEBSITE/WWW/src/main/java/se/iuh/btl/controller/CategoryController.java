@@ -44,7 +44,6 @@ public class CategoryController {
 		categoryService.saveCategory(category);
 		return "redirect:/category/listcategorys";
 	}
-
 	@GetMapping("/updateCategoryForm/{id}")
 	public String showFormForUpdate(@PathVariable("id") int id, Model model) {
 		Category category = categoryService.getCategory(id);

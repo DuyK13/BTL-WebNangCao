@@ -10,4 +10,4 @@
 <body>
 	<a href="<c:url value="/listchocolates"/>">Chocolates</a>
 </body>
-</html>
+</html> 

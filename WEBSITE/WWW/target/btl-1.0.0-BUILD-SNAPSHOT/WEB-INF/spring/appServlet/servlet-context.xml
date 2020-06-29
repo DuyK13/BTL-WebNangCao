@@ -84,8 +84,6 @@
 	
 	<context:component-scan
 		base-package="se.iuh.btl.controller" />
-	
-		
 	<beans:bean id="userDAO"
 		class="se.iuh.btl.dao.userdao.UserDAOImpl">
 		<beans:property name="sessionFactory"
