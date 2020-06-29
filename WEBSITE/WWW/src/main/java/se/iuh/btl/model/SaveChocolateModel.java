@@ -29,7 +29,6 @@ public class SaveChocolateModel {
 	
 	private List<BillDetail> listChiTietBill;
 
-	private Category category;
 
 	public SaveChocolateModel(int id, String name, int amount, double cost, String description, String image,
 			int discount, List<BillDetail> listChiTietBill, Category category) {
