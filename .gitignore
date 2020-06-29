@@ -95,6 +95,7 @@ WEBSITE/WWW/target/
 hs_err_pid*
 
 ### m2e ###
+.classpath
 .project
 
 ### Windows ###
