@@ -33,7 +33,11 @@ public class UserDAOImpl implements UserDAO {
 	@Override
 	public void removeUser(User user) {
 		Session session = this.sessionFactory.getCurrentSession();
+<<<<<<< HEAD
+		User u = session.load(User.class, user.getId());
+=======
 		User u = session.load(User.class, user.getUserId());
+>>>>>>> origin/master
 		if (u != null) {
 			session.delete(u);
 		}

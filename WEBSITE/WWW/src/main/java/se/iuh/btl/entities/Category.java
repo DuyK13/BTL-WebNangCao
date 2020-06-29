@@ -28,11 +28,19 @@ public class Category implements Serializable{
 		super();
 	}
 
+<<<<<<< HEAD
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+=======
 	public int getCategoryId() {
 		return id;
 	}
 
 	public void setCategoryId(int id) {
+>>>>>>> origin/master
 		this.id = id;
 	}
 
