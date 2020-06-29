@@ -28,11 +28,11 @@ public class Category implements Serializable{
 		super();
 	}
 
-	public int getCategoryId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setCategoryId(int id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -44,8 +44,5 @@ public class Category implements Serializable{
 		this.name = name;
 	}
 
-	@Override
-	public String toString() {
-		return "Category [id=" + id + ", name=" + name + "]";
-	}
+
 }

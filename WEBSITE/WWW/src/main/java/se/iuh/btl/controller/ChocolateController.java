@@ -1,5 +1,7 @@
 package se.iuh.btl.controller;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +24,7 @@ public class ChocolateController {
 
 	private ChocolateService chocolateService;
 	private CategoryService categoryService;
-	
+
 	@Autowired(required = true)
 	public void setChocolateService(ChocolateService chocolateService) {
 		this.chocolateService = chocolateService;
@@ -32,13 +34,13 @@ public class ChocolateController {
 	public void setCategoryService(CategoryService categoryService) {
 		this.categoryService = categoryService;
 	}
-	
+
 	@GetMapping("/")
 	public String getIndex() {
 		return "index";
 	}
-	
-	@GetMapping(value = {"/chocolate/listchocolates"})
+
+	@GetMapping(value = { "/chocolate/listchocolates" })
 	public String listChocolates(Model model) {
 		List<Chocolate> chocolates = chocolateService.getChocoLates();
 		model.addAttribute("chocolates", chocolates);
@@ -55,7 +57,8 @@ public class ChocolateController {
 	}
 
 	@PostMapping("/chocolate/saveChocolate")
-	public String saveChocolate(@ModelAttribute("chocolate") Chocolate chocolate, @RequestParam(value = "file") MultipartFile file) {
+	public String saveChocolate(@ModelAttribute("chocolate") Chocolate chocolate,
+			@RequestParam(value = "file") MultipartFile file, @RequestParam(value = "category") String category) {
 		String image = chocolateService.saveImage(file);
 		chocolate.setImage(image);
 		chocolateService.saveChocoLate(chocolate);

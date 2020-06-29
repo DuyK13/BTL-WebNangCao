@@ -61,11 +61,11 @@ public class Bill implements Serializable {
 		super();
 	}
 
-	public int getBillId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setBillId(int id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 

@@ -1,4 +1,4 @@
-package se.iuh.btl.entities;
+package se.iuh.btl.model;
 
 import java.io.Serializable;
 import java.util.List;
@@ -12,13 +12,13 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-@Entity
-@Table(name = "Chocolate")
-public class Chocolate implements Serializable {
+import se.iuh.btl.entities.BillDetail;
+import se.iuh.btl.entities.Category;
+
+public class SaveChocolateModel {
 
 	private static final long serialVersionUID = 2281637492511209363L;
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+
 	private int id;
 	private String name;
 	private int amount;
@@ -26,14 +26,12 @@ public class Chocolate implements Serializable {
 	private String description;
 	private String image;
 	private int discount;
-
-	@OneToMany(mappedBy = "pk.chocolate")
+	
 	private List<BillDetail> listChiTietBill;
 
-	@ManyToOne(fetch = FetchType.EAGER)
 	private Category category;
 
-	public Chocolate(int id, String name, int amount, double cost, String description, String image,
+	public SaveChocolateModel(int id, String name, int amount, double cost, String description, String image,
 			int discount, List<BillDetail> listChiTietBill, Category category) {
 		super();
 		this.id = id;
@@ -45,22 +43,6 @@ public class Chocolate implements Serializable {
 		this.discount = discount;
 		this.listChiTietBill = listChiTietBill;
 		this.category = category;
-	}
-
-	public Chocolate() {
-		super();
-	}
-
-	public Chocolate(int id, String name, int amount, double cost, String description, String image,
-			int discount) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.amount = amount;
-		this.cost = cost;
-		this.description = description;
-		this.image = image;
-		this.discount = discount;
 	}
 
 	public int getId() {

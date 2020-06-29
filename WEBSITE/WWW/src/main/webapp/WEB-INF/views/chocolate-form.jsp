@@ -24,7 +24,8 @@
 				</div>
 				<div class="panel-body">
 					<form:form action="saveChocolate" cssClass="form-horizontal"
-						method="post" modelAttribute="chocolate" enctype="multipart/form-data">
+						method="post" modelAttribute="chocolate"
+						enctype="multipart/form-data">
 						<form:hidden path="id" />
 
 						<div class="form-group">
@@ -61,7 +62,7 @@
 								<form:input path="discount" cssClass="form-control" />
 							</div>
 						</div>
-						
+
 						<div class="form-group">
 							<label for="file" class="col-md-3 control-label">Images</label>
 							<div class="col-md-9">
@@ -73,9 +74,10 @@
 							<label for="category" class="col-md-3 control-label">Category</label>
 							<div class="col-md-9">
 								<form:select path="category">
-								<c:forEach items="${categories}" var="loai">
-								</c:forEach>
-									<form:option value=""></form:option>
+									<form:option value="0" label="Please Select" />
+									<c:forEach var="category" items="${categories}">
+										<option value="${category.id}">${category.name}</option>
+									</c:forEach>
 								</form:select>
 							</div>
 						</div>
