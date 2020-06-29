@@ -63,6 +63,7 @@ public class Chocolate implements Serializable {
 		this.discount = discount;
 	}
 
+
 	public int getId() {
 		return id;
 	}
@@ -70,6 +71,7 @@ public class Chocolate implements Serializable {
 	public void setId(int id) {
 		this.id = id;
 	}
+
 
 	public String getName() {
 		return name;
