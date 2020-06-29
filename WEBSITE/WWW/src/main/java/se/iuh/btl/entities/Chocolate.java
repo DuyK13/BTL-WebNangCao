@@ -64,11 +64,11 @@ public class Chocolate implements Serializable {
 		this.discount = discount;
 	}
 
-	public int getChocolateId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setChocolateId(int id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 

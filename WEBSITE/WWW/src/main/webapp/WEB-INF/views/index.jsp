@@ -8,6 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<a href="<c:url value="/listchocolates"/>">Chocolates</a>
+	<a href="<c:url value="/chocolate/listchocolates"/>">Chocolates</a>
+	<a href="<c:url value="/category/listcategories"/>">Categories</a>
 </body>
 </html>

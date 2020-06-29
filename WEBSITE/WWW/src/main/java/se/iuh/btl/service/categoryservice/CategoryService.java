@@ -5,7 +5,7 @@ import java.util.List;
 import se.iuh.btl.entities.Category;
 
 public interface CategoryService {
-	public List<Category> getCategorys();
+	public List<Category> getCategories();
 
 	public void saveCategory(Category category);
 
@@ -19,5 +19,5 @@ public interface CategoryService {
 	 * @param name
 	 * @return
 	 */
-	public List<Category> getCategorysByName(String name);
+	public List<Category> getCategoriesByName(String name);
 }

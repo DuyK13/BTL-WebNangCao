@@ -15,7 +15,6 @@ import se.iuh.btl.entities.Category;
 import se.iuh.btl.service.categoryservice.CategoryService;
 
 @Controller
-@RequestMapping("/category")
 public class CategoryController {
 
 	public CategoryService categoryService;
@@ -25,36 +24,37 @@ public class CategoryController {
 		this.categoryService = categoryService;
 	}
 
-	@GetMapping("/listcategorys")
-	public String listCategorys(Model model) {
-		List<Category> categorys = categoryService.getCategorys();
-		model.addAttribute("categorys", categorys);
-		return "list-categorys";
+	@GetMapping("/category/listcategories")
+	public String listCategories(Model model) {
+		List<Category> categories = categoryService.getCategories();
+		model.addAttribute("categories", categories);
+		return "list-categories";
 	}
 
-	@GetMapping("/showCategoryForm")
+	@GetMapping("/category/showCategoryForm")
 	public String showFormForAdd(Model model) {
 		Category category = new Category();
 		model.addAttribute("category", category);
 		return "category-form";
 	}
 
-	@PostMapping("/saveCategory")
+	@PostMapping("/category/saveCategory")
 	public String saveCategory(@ModelAttribute("category") Category category) {
+		System.out.println(category);
 		categoryService.saveCategory(category);
-		return "redirect:/category/listcategorys";
+		return "redirect:/category/listcategories";
 	}
 
-	@GetMapping("/updateCategoryForm/{id}")
+	@GetMapping("/category/updateCategoryForm/{id}")
 	public String showFormForUpdate(@PathVariable("id") int id, Model model) {
 		Category category = categoryService.getCategory(id);
 		model.addAttribute("category", category);
 		return "Category-form";
 	}
 
-	@GetMapping("/deleteCategory/{id}")
+	@GetMapping("/category/deleteCategory/{id}")
 	public String deleteCategory(@PathVariable("id") int id) {
 		categoryService.deleteCategory(id);
-		return "redirect:/category/listCategorys";
+		return "redirect:/category/listCategories";
 	}
 }

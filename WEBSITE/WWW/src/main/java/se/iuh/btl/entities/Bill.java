@@ -62,11 +62,11 @@ public class Bill implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
-	public int getBillId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setBillId(int id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 

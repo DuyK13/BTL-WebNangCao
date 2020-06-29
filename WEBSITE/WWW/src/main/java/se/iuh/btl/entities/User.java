@@ -75,11 +75,11 @@ public class User implements Serializable {
 		super();
 	}
 
-	public int getUserId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setUserId(int id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
