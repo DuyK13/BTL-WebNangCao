@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans:beans xmlns="http://www.springframework.org/schema/mvc"
+<beans:beans
+	xmlns="http://www.springframework.org/schema/mvc"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:mvc="http://www.springframework.org/schema/mvc"
 	xmlns:beans="http://www.springframework.org/schema/beans"
@@ -30,8 +31,8 @@
 
 	<beans:bean id="multipartResolver"
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-	<beans:property name="maxUploadSize" value="314572800"></beans:property>
-	
+		<beans:property name="maxUploadSize" value="314572800"></beans:property>
+
 	</beans:bean>
 	<beans:bean id="dataSource"
 		class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
@@ -44,7 +45,7 @@
 		<beans:property name="username" value="sa"></beans:property>
 		<beans:property name="password" value="sapassword"></beans:property>
 	</beans:bean>
-	
+
 	<beans:bean id="hibernate5AnnotatedSessionFactory"
 		class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
 		<beans:property name="dataSource" ref="dataSource"></beans:property>
@@ -81,58 +82,53 @@
 
 	<tx:annotation-driven
 		transaction-manager="transactionManager" />
-	
+
 	<beans:bean id="transactionManager"
 		class="org.springframework.orm.hibernate5.HibernateTransactionManager">
 		<beans:property name="sessionFactory"
 			ref="hibernate5AnnotatedSessionFactory">
 		</beans:property>
 	</beans:bean>
-	
+
 	<context:component-scan
 		base-package="se.iuh.btl.controller" />
-	
-		
-	
+
+
+
 	<beans:bean id="userDAO"
 		class="se.iuh.btl.dao.userdao.UserDAOImpl">
 		<beans:property name="sessionFactory"
 			ref="hibernate5AnnotatedSessionFactory">
 		</beans:property>
 	</beans:bean>
-	
+
 	<beans:bean id="userService"
 		class="se.iuh.btl.service.userservice.UserServiceImpl">
 		<beans:property name="userDAO" ref="userDAO"></beans:property>
 	</beans:bean>
-	
+
 	<beans:bean id="chocolateDAO"
 		class="se.iuh.btl.dao.chocolatedao.ChocolateDAOImpl">
 		<beans:property name="sessionFactory"
 			ref="hibernate5AnnotatedSessionFactory">
 		</beans:property>
 	</beans:bean>
-	
+
 	<beans:bean id="chocolateService"
 		class="se.iuh.btl.service.chocolateservice.ChocolateServiceImpl">
 		<beans:property name="chocolateDAO" ref="chocolateDAO"></beans:property>
 	</beans:bean>
-	
+
 	<beans:bean id="categoryDAO"
 		class="se.iuh.btl.dao.categorydao.CategoryDAOImpl">
 		<beans:property name="sessionFactory"
 			ref="hibernate5AnnotatedSessionFactory">
 		</beans:property>
 	</beans:bean>
-	
+
 	<beans:bean id="categoryService"
 		class="se.iuh.btl.service.categoryservice.CategoryServiceImpl">
 		<beans:property name="categoryDAO" ref="categoryDAO"></beans:property>
 	</beans:bean>
-	
-<<<<<<< HEAD
 	<mvc:annotation-driven />
-	
-=======
->>>>>>> origin/master
 </beans:beans>

@@ -10,6 +10,7 @@ import java.util.List;
 import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Expression;
 import javax.persistence.criteria.Root;
 
 import org.hibernate.Session;
@@ -43,21 +44,21 @@ public class ChocolateDAOImpl implements ChocolateDAO {
 	@Override
 	public void saveChocoLate(Chocolate chocolate) {
 		Session currentSession = sessionFactory.getCurrentSession();
-        currentSession.saveOrUpdate(chocolate);
+		currentSession.saveOrUpdate(chocolate);
 	}
 
 	@Override
 	public Chocolate getChocoLate(int id) {
 		Session currentSession = sessionFactory.getCurrentSession();
 		Chocolate chocolate = currentSession.get(Chocolate.class, id);
-        return chocolate;
+		return chocolate;
 	}
 
 	@Override
 	public void deleteChocoLate(int id) {
 		Session session = sessionFactory.getCurrentSession();
-        Chocolate chocolate = session.byId(Chocolate.class).load(id);
-        session.delete(chocolate);
+		Chocolate chocolate = session.byId(Chocolate.class).load(id);
+		session.delete(chocolate);
 	}
 
 	@Override
@@ -66,7 +67,8 @@ public class ChocolateDAOImpl implements ChocolateDAO {
 		CriteriaBuilder cb = session.getCriteriaBuilder();
 		CriteriaQuery<Chocolate> cq = cb.createQuery(Chocolate.class);
 		Root<Chocolate> root = cq.from(Chocolate.class);
-		cq.select(root).where(cb.like(root.get("name"), "%"+name+"%"));
+		Expression<String> a = root.get("name");
+		cq.select(root).where(cb.like(a, "%" + name + "%"));
 		Query query = session.createQuery(cq);
 		return query.getResultList();
 	}

@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Expression;
 import javax.persistence.criteria.Root;
 
 import org.hibernate.Session;
@@ -22,7 +23,7 @@ public class CategoryDAOImpl implements CategoryDAO {
 	public void setSessionFactory(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
 	}
-	
+
 	@Override
 	public List<Category> getCategories() {
 		Session session = sessionFactory.getCurrentSession();
@@ -37,21 +38,21 @@ public class CategoryDAOImpl implements CategoryDAO {
 	@Override
 	public void saveCategory(Category category) {
 		Session currentSession = sessionFactory.getCurrentSession();
-        currentSession.saveOrUpdate(category);
+		currentSession.saveOrUpdate(category);
 	}
 
 	@Override
 	public Category getCategory(int id) {
 		Session currentSession = sessionFactory.getCurrentSession();
 		Category category = currentSession.get(Category.class, id);
-        return category;
+		return category;
 	}
 
 	@Override
 	public void deleteCategory(int id) {
 		Session session = sessionFactory.getCurrentSession();
-        Category category = session.byId(Category.class).load(id);
-        session.delete(category);
+		Category category = session.byId(Category.class).load(id);
+		session.delete(category);
 	}
 
 	@Override
@@ -60,7 +61,8 @@ public class CategoryDAOImpl implements CategoryDAO {
 		CriteriaBuilder cb = session.getCriteriaBuilder();
 		CriteriaQuery<Category> cq = cb.createQuery(Category.class);
 		Root<Category> root = cq.from(Category.class);
-		cq.select(root).where(cb.like(root.get("name"), "%"+name+"%"));
+		Expression<String> a = root.get("name");
+		cq.select(root).where(cb.like(a, "%" + name + "%"));
 		Query query = session.createQuery(cq);
 		return query.getResultList();
 	}

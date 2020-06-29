@@ -25,14 +25,6 @@ public class Bill implements Serializable {
 	private double total;
 	private boolean billConfirm;
 
-	public boolean isBillConfirm() {
-		return billConfirm;
-	}
-
-	public void setBillConfirm(boolean billConfirm) {
-		this.billConfirm = billConfirm;
-	}
-
 	@ManyToOne
 	@JoinColumn(name = "user_id", referencedColumnName = "id")
 	private User user;
@@ -106,9 +98,17 @@ public class Bill implements Serializable {
 		return serialVersionUID;
 	}
 
+	public boolean isBillConfirm() {
+		return billConfirm;
+	}
+
+	public void setBillConfirm(boolean billConfirm) {
+		this.billConfirm = billConfirm;
+	}
+
 	@Override
 	public String toString() {
-		return "Bill [id=" + id + ", orderdate=" + orderdate + ", total=" + total + ", billConfirm="
-				+ billConfirm + ", user=" + user + ", listChiTietBill=" + listChiTietBill + "]";
+		return "Bill [id=" + id + ", orderdate=" + orderdate + ", total=" + total + ", billConfirm=" + billConfirm
+				+ ", user=" + user + ", listChiTietBill=" + listChiTietBill + "]";
 	}
 }

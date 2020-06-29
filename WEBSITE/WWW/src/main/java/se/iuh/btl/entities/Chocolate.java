@@ -34,7 +34,7 @@ public class Chocolate implements Serializable {
 	private Category category;
 
 	public Chocolate(int id, String name, int amount, double cost, String description, String image,
-			int discount, List<BillDetail> listChiTietBill, Category category) {
+			int discount, Category category) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -43,7 +43,6 @@ public class Chocolate implements Serializable {
 		this.description = description;
 		this.image = image;
 		this.discount = discount;
-		this.listChiTietBill = listChiTietBill;
 		this.category = category;
 	}
 
@@ -51,7 +50,7 @@ public class Chocolate implements Serializable {
 		super();
 	}
 
-	public Chocolate(int id, String name, int amount, double cost, String description, String image,
+	public Chocolate(int id, String name, int amount, double cost, String description,
 			int discount) {
 		super();
 		this.id = id;
@@ -59,7 +58,6 @@ public class Chocolate implements Serializable {
 		this.amount = amount;
 		this.cost = cost;
 		this.description = description;
-		this.image = image;
 		this.discount = discount;
 	}
 

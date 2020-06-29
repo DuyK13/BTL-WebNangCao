@@ -8,6 +8,7 @@ import javax.persistence.MapsId;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+
 @Entity
 @Table(name = "BillDetail")
 public class BillDetail implements Serializable{
@@ -22,6 +23,7 @@ public class BillDetail implements Serializable{
 
 	@MapsId("id")
 	private Chocolate chocolate;
+	
 	private int quantity;
 
 	public BillDetail_PK getPk() {

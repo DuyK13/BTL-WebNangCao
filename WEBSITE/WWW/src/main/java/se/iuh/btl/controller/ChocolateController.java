@@ -16,6 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import se.iuh.btl.entities.Category;
 import se.iuh.btl.entities.Chocolate;
+import se.iuh.btl.model.SaveChocolateModel;
 import se.iuh.btl.service.categoryservice.CategoryService;
 import se.iuh.btl.service.chocolateservice.ChocolateService;
 
@@ -57,11 +58,13 @@ public class ChocolateController {
 	}
 
 	@PostMapping("/chocolate/saveChocolate")
-	public String saveChocolate(@ModelAttribute("chocolate") Chocolate chocolate,
+	public String saveChocolate(@ModelAttribute("chocolate") SaveChocolateModel chocolate,
 			@RequestParam(value = "file") MultipartFile file, @RequestParam(value = "category") String category) {
 		String image = chocolateService.saveImage(file);
-		chocolate.setImage(image);
-		chocolateService.saveChocoLate(chocolate);
+		Chocolate realChocolate = new Chocolate(chocolate.getId(), chocolate.getName(), chocolate.getAmount(), chocolate.getCost(), chocolate.getDescription(), chocolate.getDiscount());
+		realChocolate.setImage(image);
+		System.out.println(category);
+		chocolateService.saveChocoLate(realChocolate);
 		return "redirect:/chocolate/listChocolates";
 	}
 
