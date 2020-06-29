@@ -23,7 +23,6 @@ public class BillDetail_PK implements Serializable {
 
 	public BillDetail_PK() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Bill getBill() {

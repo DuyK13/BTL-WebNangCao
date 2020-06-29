@@ -26,7 +26,6 @@ public class Category implements Serializable{
 
 	public Category() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 <<<<<<< HEAD
