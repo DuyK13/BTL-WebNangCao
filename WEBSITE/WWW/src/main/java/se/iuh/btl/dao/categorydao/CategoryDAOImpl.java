@@ -24,7 +24,7 @@ public class CategoryDAOImpl implements CategoryDAO {
 	}
 	
 	@Override
-	public List<Category> getCategorys() {
+	public List<Category> getCategories() {
 		Session session = sessionFactory.getCurrentSession();
 		CriteriaBuilder cb = session.getCriteriaBuilder();
 		CriteriaQuery<Category> cq = cb.createQuery(Category.class);
@@ -55,7 +55,7 @@ public class CategoryDAOImpl implements CategoryDAO {
 	}
 
 	@Override
-	public List<Category> getCategorysByName(String name) {
+	public List<Category> getCategoriesByName(String name) {
 		Session session = sessionFactory.getCurrentSession();
 		CriteriaBuilder cb = session.getCriteriaBuilder();
 		CriteriaQuery<Category> cq = cb.createQuery(Category.class);

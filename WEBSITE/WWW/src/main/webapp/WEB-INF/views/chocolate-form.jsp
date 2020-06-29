@@ -7,10 +7,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Chocolate form</title>
-<link href="<c:url value="resources/css/bootstrap.min.css" />"
+<link
+	href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css"
 	rel="stylesheet">
-<script src="<c:url value="resources/js/jquery-3.3.1.min.js" />"></script>
-<script src="<c:url value="resources/js/bootstrap.min.js" />"></script>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/resources/js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
 </head>
 <body>
 	<div class="container">
@@ -22,7 +25,7 @@
 				<div class="panel-body">
 					<form:form action="saveChocolate" cssClass="form-horizontal"
 						method="post" modelAttribute="chocolate" enctype="multipart/form-data">
-						<form:hidden path="chocolateId" />
+						<form:hidden path="id" />
 
 						<div class="form-group">
 							<label for="name" class="col-md-3 control-label">Name</label>
@@ -70,6 +73,8 @@
 							<label for="category" class="col-md-3 control-label">Category</label>
 							<div class="col-md-9">
 								<form:select path="category">
+								<c:forEach items="${categories}" var="loai">
+								</c:forEach>
 									<form:option value=""></form:option>
 								</form:select>
 							</div>
@@ -81,7 +86,6 @@
 								<form:button cssClass="btn btn-primary">Submit</form:button>
 							</div>
 						</div>
-
 					</form:form>
 				</div>
 			</div>

@@ -19,8 +19,8 @@ public class CategoryServiceImpl implements CategoryService {
 
 	@Override
 	@Transactional
-	public List<Category> getCategorys() {
-		return categoryDAO.getCategorys();
+	public List<Category> getCategories() {
+		return categoryDAO.getCategories();
 	}
 
 	@Override
@@ -43,8 +43,8 @@ public class CategoryServiceImpl implements CategoryService {
 
 	@Override
 	@Transactional
-	public List<Category> getCategorysByName(String name) {
-		return categoryDAO.getCategorysByName(name);
+	public List<Category> getCategoriesByName(String name) {
+		return categoryDAO.getCategoriesByName(name);
 	}
 
 }
